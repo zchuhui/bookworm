@@ -1,16 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router';
-import Paper from '@material-ui/core/Paper';
-import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import Search from '@material-ui/icons/Search';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-
+import LogoSrc from "../../../public/warn.jpg";
 import styles from './Book.less'
 
 class Book extends React.Component {
@@ -25,45 +16,26 @@ class Book extends React.Component {
 
     return (
       <div className={styles.bookContainer}>
-        <Input
-          placeholder="Search"
-          className={styles.searchInput}
-          onChange={this.handleChangeQ}
-          inputProps={{
-            'aria-label': 'Description',
-          }}
-        />
+        <div className={styles.logoWrap}>
+          <img src={LogoSrc} />
 
-        <Button variant="contained" color="primary" aria-label="add" className={styles.btnSearch} onClick={this.handleSearch}>
-          Search
-        </Button>
+        </div>
+        <div className={styles.searchBox}>
+          <input
+            type="text"
+            className={styles.searchInput}
+            onChange={this.handleChangeQ}
+          />
 
+        </div>
+        {/* <p className={styles.tips}>好书都在这里！</p> */}
         <div>
-          {
-            books && books.map((i,index) => (
-              <Card className={styles.card} key={index}>
-                {/* <CardMedia
-                  image='http://p2.so.qhimgs1.com/t013dc9096acc4f6ad2.jpg'
-                  title={i.title}
-                /> */}
-                
-                <img src={i.image}/>
-                <CardContent>
-                  <Typography gutterBottom variant="headline" component="h6">
-                    {i.title}
-                  </Typography>
-                  <Typography component="p">
-                    {i.subtitle}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    <a href={i.alt} target="_blank">详情</a>
-                  </Button>
-                </CardActions>
-              </Card>
-            ))
-          }
+          <Button variant="outlined" className={styles.btnSearch} onClick={this.handleSearch}>
+            书虫搜索
+          </Button>
+          <Button variant="outlined" className={styles.btnSearch} onClick={this.handleSearch}>
+            好书推荐
+          </Button>
         </div>
       </div>
     )
@@ -88,16 +60,5 @@ class Book extends React.Component {
 
 }
 
-function mapStateToProps(state) {
-  const { books, total, page, } = state.book;
-
-  return {
-    books,
-    total,
-    page,
-    loading: state.loading.models.users,
-  };
-}
-
-export default connect(mapStateToProps)(Book);
+export default connect((book) => (book))(Book);
 

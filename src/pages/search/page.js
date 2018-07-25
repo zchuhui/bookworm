@@ -1,9 +1,9 @@
-import Book from './components/Book'
+import Search from './components/Search'
 
 export default () => {
   return (
     <div>
-      <Book />
+      <Search />
     </div>
   )
 }

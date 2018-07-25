@@ -1,4 +1,4 @@
-import fetch from 'dva/fetch';
+import fetch from '../../node_modules/_dva@2.3.0@dva/fetch';
 
 function checkStatus(response) {
   
