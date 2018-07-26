@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
 import Button from '@material-ui/core/Button';
-import LogoSrc from "../../../public/warn.jpg";
+import Footer from '../../../layouts/Footer'
+import LogoSrc from "../../../public/warn.png";
 import styles from './Book.less'
 
 class Book extends React.Component {
@@ -18,7 +19,6 @@ class Book extends React.Component {
       <div className={styles.bookContainer}>
         <div className={styles.logoWrap}>
           <img src={LogoSrc} />
-
         </div>
         <div className={styles.searchBox}>
           <input
@@ -37,6 +37,8 @@ class Book extends React.Component {
             好书推荐
           </Button>
         </div>
+
+        <Footer />
       </div>
     )
   }

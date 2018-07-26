@@ -1,66 +1,38 @@
-.bookContainer{
-  text-align: center;
-  padding:50px;
+.searchContainer{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100px;
+  background-color:#eee;
 
   .logoWrap{
-    position: relative;
-    width:600px;
-    height:200px;
-    margin:0 auto;
-    margin-top:50px;
-
-    img{
-      width:200px;
-      height:200px;
-    }
-  }
-
-  .tips{
-    position: absolute;
-    right:0px;
-    bottom:10px;
-    color:#666;
-    font-size:12px;
-  }
-
-  .searchBox{
-    margin-top:10px;
-    margin-bottom: 10px;
-
-
-  }
-
-  .searchInput{
-    width:600px;
-    height:30px;
-    line-height: 30px;
-    padding:5px 10px;
-    margin:10px auto;
-    border:1px solid #ddd;
-    outline:none;
-    box-shadow: 1px 1px 4px #ddd;
-
-    &:focus{
-      box-shadow: 2px 3px 4px #ddd;
-    }
-  }
-
-
-  .btnSearch{
-    border: 1px solid #ddd;
-    margin:10px 10px;
-  }
-
-  .card{
-    display: inline-block;
+    float: left;
     width:200px;
-    margin:10px;
+    height:1000px;
 
     img{
-      height:100px;
-      width:auto;
+      width:50px;
+      height:50px;
     }
 
+  }
+
+  .inputWrap{
+    float: left;
+
+    input[type='text']{
+      width:300px;
+      height:30px;
+      line-height: 30px;
+      padding:5px 10px;
+      margin:10px auto;
+      border:1px solid #ddd;
+      outline:none;
+      box-shadow: 1px 1px 4px #ddd;
+
+      &:focus{
+        box-shadow: 2px 3px 4px #ddd;
+      }
+    }
   }
 }
-
