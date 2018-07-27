@@ -12,35 +12,20 @@ class SearchPage extends React.Component {
 
   render() {
 
-    const { books } = this.props;
     return (
-      <div className={styles.searchContainer}>
+      <div className={styles.searchWrap}>
         <div className={styles.logoWrap}>
           <img src={LogoSrc} />
         </div>
         <div className={styles.inputWrap}>
           <input type="text" />
-          <Button variant="outlined">搜索</Button>
+          <Button variant="outlined" className={styles.btnSearch}>搜索</Button>
         </div>
       </div>
     )
   }
 
-  handleChangeQ = (q) => {
-    this.setState({
-      q: q.target.value
-    })
-  }
 
-
-  handleSearch = () => {
-    this.props.dispatch({
-      type: 'book/search',
-      payload: {
-        q: this.state.q
-      }
-    })
-  }
 
 }
 

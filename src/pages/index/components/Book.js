@@ -1,19 +1,78 @@
 import React from 'react';
 import { connect } from 'dva';
+import router from 'umi/router';
 import Button from '@material-ui/core/Button';
 import Footer from '../../../layouts/Footer'
 import LogoSrc from "../../../public/warn.png";
 import styles from './Book.less'
 
+/**
+ * 搜索组件
+ */
 class Book extends React.Component {
 
   state = {
-    q: null
+    keyword: null         // search keyword
   }
 
-  render() {
+  /**
+   * change input value
+   */
+  handleChangeQ = (q) => {
+    this.setState({
+      keyword: q.target.value
+    })
+    console.log(this.state.keyword)
+  }
 
-    const { books } = this.props;
+  /**
+   * input Enter key
+   */
+  handleEnter = (e) => {
+    if (!this.state.keyword) {
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      this.props.dispatch({
+        type: 'book/search',
+        payload: {
+          q: this.state.keyword
+        }
+      })
+
+      // to search list
+      router.push('/search')
+    }
+
+  }
+
+
+  /**
+   * search btn
+   */
+  handleSearch = () => {
+    if (!this.state.keyword) {
+      return;
+    }
+
+    this.props.dispatch({
+      type: 'book/search',
+      payload: {
+        q: this.state.keyword
+      }
+    });
+
+    // to search list
+    router.push('/search')
+
+
+  }
+
+  /**
+   * render
+   */
+  render() {
 
     return (
       <div className={styles.bookContainer}>
@@ -25,6 +84,7 @@ class Book extends React.Component {
             type="text"
             className={styles.searchInput}
             onChange={this.handleChangeQ}
+            onKeyPress={this.handleEnter}
           />
 
         </div>
@@ -41,23 +101,6 @@ class Book extends React.Component {
         <Footer />
       </div>
     )
-  }
-
-  handleChangeQ = (q) => {
-    console.log('q', q.target.value);
-    this.setState({
-      q: q.target.value
-    })
-  }
-
-
-  handleSearch = () => {
-    this.props.dispatch({
-      type: 'book/search',
-      payload: {
-        q: this.state.q
-      }
-    })
   }
 
 }
