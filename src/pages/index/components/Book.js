@@ -22,7 +22,21 @@ class Book extends React.Component {
     this.setState({
       keyword: q.target.value
     })
-    console.log(this.state.keyword)
+  }
+
+  /**
+   * jump search page
+   */
+  jumpSearch = () => {
+    this.props.dispatch({
+      type: 'book/search',
+      payload: {
+        q: this.state.keyword
+      }
+    })
+
+    // to search list
+    router.push('/search?q='+this.state.keyword)
   }
 
   /**
@@ -34,15 +48,7 @@ class Book extends React.Component {
     }
 
     if (e.key === 'Enter') {
-      this.props.dispatch({
-        type: 'book/search',
-        payload: {
-          q: this.state.keyword
-        }
-      })
-
-      // to search list
-      router.push('/search')
+      this.jumpSearch()
     }
 
   }
@@ -56,16 +62,7 @@ class Book extends React.Component {
       return;
     }
 
-    this.props.dispatch({
-      type: 'book/search',
-      payload: {
-        q: this.state.keyword
-      }
-    });
-
-    // to search list
-    router.push('/search')
-
+    this.jumpSearch()
 
   }
 

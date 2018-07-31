@@ -14,10 +14,11 @@ export default {
   },
   effects: {
 
+    /**
+     * search book
+     */
     *search({ payload }, { call, put }) {
       const { data } = yield call(usersService.search, { ...payload });
-      console.log('search data',data);
-
       if (data && data.books) {
         yield put({
           type: 'save',
@@ -27,15 +28,16 @@ export default {
           },
         });
       }
-
     }
-
   },
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-         if (pathname === '/book') {
-           //dispatch({ type: 'search', });
+         if (pathname === '/search') {
+          dispatch({
+            type:'search',
+            payload:query
+          })
         }
       });
     },
