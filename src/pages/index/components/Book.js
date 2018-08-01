@@ -95,7 +95,7 @@ class Book extends React.Component {
           </Button>
         </div>
 
-        <Footer />
+        <Footer isFixed={true}/>
       </div>
     )
   }

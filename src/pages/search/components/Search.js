@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'dva';
 import router from 'umi/router';
 import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import green from '@material-ui/core/colors/green';
 import LogoSrc from "../../../public/warn.png";
 import styles from './Search.less'
 
@@ -15,7 +17,7 @@ class SearchPage extends React.Component {
     super(props);
 
     this.state = {
-      keyword: decodeURIComponent(window.location.search.split('=')[1])
+      keyword: decodeURIComponent(window.location.search.split('=')[1]),
     }
   }
 
@@ -41,7 +43,7 @@ class SearchPage extends React.Component {
     })
 
     // to search list
-    router.push('/search?q='+this.state.keyword)
+    router.push('/search?q=' + this.state.keyword)
   }
 
 
@@ -75,6 +77,8 @@ class SearchPage extends React.Component {
    */
   render() {
 
+    const { loading } = this.props
+
     return (
       <div className={styles.searchWrap}>
         <div className={styles.logoWrap}>
@@ -86,12 +90,17 @@ class SearchPage extends React.Component {
             value={this.state.keyword}
             onChange={this.handleChangeQ}
             onKeyPress={this.handleEnter}
-            />
+          />
           <Button
             variant="outlined"
             className={styles.btnSearch}
             onClick={this.handleSearch}
-            >搜索</Button>
+          >搜索</Button>
+        </div>
+        <div className={styles.loadingProgress}>
+          {
+            loading ? <LinearProgress styles={{color:green}} /> : null
+          }
         </div>
       </div>
     )
@@ -99,5 +108,12 @@ class SearchPage extends React.Component {
 
 }
 
-export default connect((search) => (search))(SearchPage);
+function mapStateToProps(state) {
+  return {
+    search: state.search,
+    loading: state.loading.models.search,
+  };
+}
+
+export default connect(mapStateToProps)(SearchPage);
 
