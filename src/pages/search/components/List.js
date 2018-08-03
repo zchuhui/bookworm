@@ -49,44 +49,53 @@ const testData = [
 ]
 
 class ListPage extends React.Component {
+  constructor(props){
+    super(props);
 
-  state = {
-    q: null
+    this.state = {
+      q: null
+    }
   }
 
-
-
-  render() {
-
-    const { books } = this.props;
-
-    function listItem(detail) {
-      return(
-        <div className={styles.itemWrap}>
-          <div className={styles.itemImg}>
-            <img src={detail.image} />
-          </div>
-          <div className={styles.itemMain}>
-            <h2 className={styles.itemTitle}>{detail.title}</h2>
-            <div className={styles.itemAuthor}>
-              {detail.author} / {detail.pubdate}
-            </div>
-            <div className={styles.itemSummary}>{detail.summary}</div>
-          </div>
-        </div>
-      )
-    }
-
+  /**
+   * 渲染单条数据
+   * @param {object}} detail
+   */
+  renderItem(detail){
     return (
-      <div className={styles.listWrap}>
-        {
-          testData.map((item) => (listItem(item)))
-        }
+      <div className={styles.itemWrap}>
+        <div className={styles.itemImg}>
+          <img src={detail.image} />
+        </div>
+        <div className={styles.itemMain}>
+          <h2 className={styles.itemTitle}>{detail.title}</h2>
+          <div className={styles.itemAuthor}>
+            {detail.author} / {detail.pubdate}
+          </div>
+          <div className={styles.itemSummary}>{detail.summary}</div>
+        </div>
       </div>
     )
   }
 
+  /**
+   * 渲染该模块
+   */
+  render() {
 
+    const { books } = this.props;
+
+    return (
+      <div className={styles.listWrap}>
+        {
+          testData.map((item) => (this.renderItem(item)))
+        }
+      </div>
+    )
+  }
+}
+
+ListPage.propTypes={
 
 }
 
