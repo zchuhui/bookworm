@@ -36,7 +36,7 @@ if (module.hot) {
   });
 }
 
-require('G:/mycode/bookworm/src/global.less');
+require('D:/works/my/bookworm/src/global.less');
 // Enable service worker
 if (process.env.NODE_ENV === 'production') {
   require('./registerServiceWorker');

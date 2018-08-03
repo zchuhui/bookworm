@@ -9,6 +9,7 @@ import styles from './List.less'
 class ListPage extends React.Component {
   constructor(props){
     super(props);
+  }
 
 
   renderLoading(){

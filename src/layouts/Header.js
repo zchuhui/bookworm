@@ -2,17 +2,28 @@ import React from 'react';
 import { connect } from 'dva';
 import router from 'umi/router';
 import Button from '@material-ui/core/Button';
-import Footer from '../../../layouts/Footer'
-import LogoSrc from "../../../public/warn.png";
-import styles from './Book.less'
+import LinearProgress from '@material-ui/core/LinearProgress';
+import green from '@material-ui/core/colors/green';
+import LogoSrc from '../public/warn.png'
+import styles from './Header.less'
 
 /**
- * 搜索组件
+ * 搜索页面的搜索栏
  */
-class Book extends React.Component {
+class Header extends React.Component {
 
-  state = {
-    keyword: null         // search keyword
+  // 构造函数
+  constructor(props) {
+    super(props);
+
+
+    // 获取搜索参数
+    const params = window.location.search.split('='),
+      kw = params.length > 1 ? decodeURIComponent(params[1]) : ''
+
+    this.state = {
+      keyword: kw
+    }
   }
 
   /**
@@ -23,6 +34,7 @@ class Book extends React.Component {
       keyword: q.target.value
     })
   }
+
 
   /**
    * jump search page
@@ -38,6 +50,7 @@ class Book extends React.Component {
     // to search list
     router.push('/search?q=' + this.state.keyword)
   }
+
 
   /**
    * input Enter key
@@ -63,33 +76,36 @@ class Book extends React.Component {
     this.jumpSearch()
   }
 
+
   /**
-   * render
+   * 渲染
    */
   render() {
 
+    const { loading } = this.props
+
     return (
-      <div className={styles.bookContainer}>
+      <div className={styles.searchWrap}>
         <div className={styles.logoWrap}>
           <img src={LogoSrc} />
         </div>
-        <div className={styles.searchBox}>
+        <div className={styles.inputWrap}>
           <input
             type="text"
-            className={styles.searchInput}
+            value={this.state.keyword}
             onChange={this.handleChangeQ}
             onKeyPress={this.handleEnter}
           />
-
+          <Button
+            variant="outlined"
+            className={styles.btnSearch}
+            onClick={this.handleSearch}
+          >搜索</Button>
         </div>
-        {/* <p className={styles.tips}>好书都在这里！</p> */}
-        <div>
-          <Button variant="outlined" className={styles.btnSearch} onClick={this.handleSearch}>
-            书虫搜索
-          </Button>
-          <Button variant="outlined" className={styles.btnSearch} onClick={this.handleSearch}>
-            好书推荐
-          </Button>
+        <div className={styles.loadingProgress}>
+          {
+            loading ? <LinearProgress styles={{ color: green }} /> : null
+          }
         </div>
       </div>
     )
@@ -97,5 +113,12 @@ class Book extends React.Component {
 
 }
 
-export default connect((book) => (book))(Book);
+function mapStateToProps(state) {
+  return {
+    search: state.search,
+    loading: state.loading.models.search,
+  };
+}
+
+export default connect(mapStateToProps)(Header);
 

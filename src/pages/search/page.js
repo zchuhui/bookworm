@@ -5,9 +5,8 @@ import Footer from '../../layouts/Footer'
 export default () => {
   return (
     <div>
-      <Search />
+      {/* <Search /> */}
       <List />
-      <Footer isFixed={false} />
     </div>
   )
 }

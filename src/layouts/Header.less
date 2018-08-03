@@ -1,0 +1,58 @@
+.searchWrap{
+  position: relative;
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100px;
+  background-color:#fafafa;
+  border-bottom:1px solid #ddd;
+
+  .logoWrap{
+    float: left;
+    width:140px;
+    height:100px;
+
+    img{
+      width:100px;
+      height:auto;
+      margin-top:20px;
+      margin-left:20px;
+    }
+
+  }
+
+  .inputWrap{
+    float: left;
+
+    input[type='text']{
+      width:300px;
+      height:30px;
+      line-height: 30px;
+      padding:5px 10px;
+      margin:30px auto;
+      border:1px solid #ddd;
+      outline:none;
+      box-shadow: 1px 1px 4px #ddd;
+
+      &:focus{
+        box-shadow: 2px 3px 4px #ddd;
+      }
+    }
+
+    .btnSearch{
+      background-color:#fff;
+      height:40px;
+      margin-left:10px;
+    }
+  }
+
+  .loadingProgress{
+    width:100%;
+    height:2px;
+    overflow: hidden;
+    position: absolute;
+    bottom:-2px;
+    left:0;
+
+  }
+}
