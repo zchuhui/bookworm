@@ -4,20 +4,25 @@ import router from 'umi/router';
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import green from '@material-ui/core/colors/green';
-import LogoSrc from "../../../public/warn.png";
-import styles from './Search.less'
+import LogoSrc from '../public/warn.png'
+import styles from './Header.less'
 
 /**
  * 搜索页面的搜索栏
  */
-class SearchPage extends React.Component {
+class Header extends React.Component {
 
   // 构造函数
   constructor(props) {
     super(props);
 
+
+    // 获取搜索参数
+    const params = window.location.search.split('='),
+      kw = params.length > 1 ? decodeURIComponent(params[1]) : ''
+
     this.state = {
-      keyword: decodeURIComponent(window.location.search.split('=')[1]),
+      keyword: kw
     }
   }
 
@@ -99,7 +104,7 @@ class SearchPage extends React.Component {
         </div>
         <div className={styles.loadingProgress}>
           {
-            loading ? <LinearProgress styles={{color:green}} /> : null
+            loading ? <LinearProgress styles={{ color: green }} /> : null
           }
         </div>
       </div>
@@ -115,5 +120,5 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SearchPage);
+export default connect(mapStateToProps)(Header);
 

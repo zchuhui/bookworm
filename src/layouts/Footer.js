@@ -3,8 +3,9 @@ import styles from './Footer.less'
 
 export default class componentName extends Component {
   render() {
+
     return (
-      <div className={styles.footerWrap}>
+      <div className={this.props.isFixed?styles.footerWrapFixed:styles.footerWrap}>
         <span>© 2018 备案 xxxxx 号</span>
         <span>书虫简介</span>
 
