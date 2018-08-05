@@ -2,17 +2,72 @@
   margin:20px 0 20px 150px;
 
   .basicWrap{
+    min-height:800px;
+
     .title{
+      margin-top:50px;
       font-size:24px;
 
       span{
-        font-size: 14px;
+        font-size: 18px;
         font-weight: normal;
         color:#333;
       }
     }
 
     .info{
+      margin-top:30px;
+
+      .infoImg{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        width:150px;
+        height:200px;
+        overflow: hidden;
+
+        img{
+          width:100%;
+          height:auto;
+          display: inline-flex;
+        }
+      }
+      .infoDesc{
+        margin-left:180px;
+
+        ul li{
+          line-height: 24px;
+
+          label{
+            display: inline-block;
+            width:60px;
+            margin-right:10px;
+            font-size:12px;
+            color:#999;
+          }
+
+          .rater{
+            display: inline-block;
+            color:#F08113;
+            font-size:20px;
+
+            div{
+              display:inline;
+              margin:2px;
+            }
+          }
+
+          .tag{
+            display: inline-block;
+            padding:2px;
+            background-color:#eee;
+            color:#333;
+            border-radius: 5px;
+            margin-right:5px;
+          }
+        }
+      }
 
     }
   }

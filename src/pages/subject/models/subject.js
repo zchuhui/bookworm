@@ -4,7 +4,12 @@ export default {
   namespace: 'bookDetail',
   state: {
     detail: {
-      rating: {},
+      rating: {
+        max: 10,
+        numRaters: 177802,
+        average: "8.8",
+        min: 0
+      },
       subtitle: "“地球往事”三部曲之一",
       author: [
         "刘慈欣"

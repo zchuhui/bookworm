@@ -9,11 +9,11 @@ class page extends Component {
   render() {
 
     const { bookDetail, loading } = this.props
-    const {detail} = bookDetail
+    const { detail } = bookDetail
 
     return (
       <div>
-        <Detail detail={detail} />
+        <Detail detail={detail} loading={loading} />
       </div>
     );
   }

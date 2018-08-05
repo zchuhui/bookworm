@@ -10,9 +10,9 @@ let app = dva({
 window.g_app = app;
 app.use(createLoading());
 
-app.model({ namespace: 'book', ...(require('D:/works/my/bookworm/src/pages/index/models/book.js').default) });
-app.model({ namespace: 'search', ...(require('D:/works/my/bookworm/src/pages/search/models/search.js').default) });
-app.model({ namespace: 'subject', ...(require('D:/works/my/bookworm/src/pages/subject/models/subject.js').default) });
+app.model({ namespace: 'book', ...(require('/Users/zchuhui/codes/bookworm/src/pages/index/models/book.js').default) });
+app.model({ namespace: 'search', ...(require('/Users/zchuhui/codes/bookworm/src/pages/search/models/search.js').default) });
+app.model({ namespace: 'subject', ...(require('/Users/zchuhui/codes/bookworm/src/pages/subject/models/subject.js').default) });
 
 class DvaContainer extends Component {
   render() {

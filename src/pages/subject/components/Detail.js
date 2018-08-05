@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import Rater from 'react-rater';
 import styles from './Detail.less'
 
 class Detail extends Component {
 
 
+  /**
+   * book basic info
+   * @param {object} detail
+   */
   renderBasicInfo(detail){
       return(
         <div className={styles.basicWrap}>
@@ -13,19 +18,29 @@ class Detail extends Component {
             <div className={styles.infoDesc}>
               <ul>
                 <li><label>作者:</label>{detail.author}</li>
-                <li><label>出版社:</label>{}</li>
-                <li><label>出版日期:</label>{}</li>
-                <li><label>:</label>{}</li>
-                <li><label>:</label>{}</li>
-                <li><label>:</label>{}</li>
-                <li><label>定价:</label>{}</li>
-                <li><label>ISBN:</label>{}</li>
+                <li><label>豆瓣评分:</label>
+                  <Rater className={styles.rater} total={detail.rating.max/2} rating={detail.rating.average/2}>
+
+                  </Rater>
+                  {detail.rating && detail.rating.average}
+                </li>
+                <li><label>出版社:</label>{detail.publisher}</li>
+                <li><label>出版日期:</label>{detail.pubdate}</li>
+                <li><label>定价:</label>{detail.price}</li>
+                <li><label>标签:</label>
+                  {
+                    detail.tags.map((item,index)=>(<span className={styles.tag}>{item.name}</span>))
+                  }
+                </li>
               </ul>
             </div>
           </div>
         </div>
       )
   }
+
+
+
 
   render() {
     const { detail } = this.props;
