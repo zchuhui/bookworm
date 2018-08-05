@@ -26,6 +26,58 @@ class SearchPage extends React.Component {
   }
 
 
+  /**
+   * change input value
+   */
+  handleChangeQ = (q) => {
+    this.setState({
+      keyword: q.target.value
+    })
+    console.log(this.state.keyword)
+  }
+
+  /**
+   * input Enter key
+   */
+  handleEnter = (e) => {
+    if (!this.state.keyword) {
+      return;
+    }
+
+    if (e.key === 'Enter') {
+      this.props.dispatch({
+        type: 'book/search',
+        payload: {
+          q: this.state.keyword
+        }
+      })
+    }
+
+  }
+
+
+  /**
+   * search btn
+   */
+  handleSearch = () => {
+    if (!this.state.keyword) {
+      return;
+    }
+
+    this.props.dispatch({
+      type: 'book/search',
+      payload: {
+        q: this.state.keyword
+      }
+    });
+
+    // to search list
+    router.push('/search')
+
+
+  }
+
+
 
 }
 
