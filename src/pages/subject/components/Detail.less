@@ -3,6 +3,9 @@
 
   .basicWrap{
     min-height:800px;
+    width:80%;
+    min-width: 600px;
+    max-width: 1000px;
 
     .title{
       margin-top:50px;
@@ -17,6 +20,7 @@
 
     .info{
       margin-top:30px;
+      height:250px;
 
       .infoImg{
         display: flex;
@@ -37,7 +41,7 @@
         margin-left:180px;
 
         ul li{
-          line-height: 24px;
+          line-height: 28px;
 
           label{
             display: inline-block;
@@ -60,15 +64,24 @@
 
           .tag{
             display: inline-block;
-            padding:2px;
+            height:20px;
+            line-height: 20px;
+            padding:1px 5px;
             background-color:#eee;
             color:#333;
             border-radius: 5px;
-            margin-right:5px;
+            margin-right:10px;
+            box-shadow: 1px 1px 3px #ddd;
           }
         }
       }
 
+    }
+
+    .summary{
+      font-size:14px;
+      color:#666;
+      line-height: 24px;
     }
   }
 

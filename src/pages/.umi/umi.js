@@ -36,7 +36,7 @@ if (module.hot) {
   });
 }
 
-require('/Users/zchuhui/codes/bookworm/src/global.less');
+require('G:/mycode/bookworm/src/global.less');
 // Enable service worker
 if (process.env.NODE_ENV === 'production') {
   require('./registerServiceWorker');
